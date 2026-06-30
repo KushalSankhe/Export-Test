@@ -16,6 +16,7 @@
     output_path: "./aap-uat-no-secret1"
     # flatten_output: true
     export_related_objects: false
+    platform_collection_path: /usr/share/ansible/collections/ansible_collections/ansible/platform
  
  
     # The definitive list capturing both platform architecture and static/dynamic inventories
@@ -44,16 +45,10 @@
 #      - controller_notification_templates
 #
   pre_tasks:
-    - name: Locate ansible.platform collection install path
-      ansible.builtin.shell: |
-        python3 -c "import ansible_collections.ansible.platform as p; print(p.__path__[0])"
-      register: platform_collection_path
-      changed_when: false
-
     - name: Patch platform_manager.py with urljoin fix
       ansible.builtin.copy:
         src: "{{ playbook_dir }}/platform_manager.py"
-        dest: "{{ platform_collection_path.stdout }}/plugins/plugin_utils/manager/platform_manager.py"
+        dest: "{{ platform_collection_path }}/plugins/plugin_utils/manager/platform_manager.py"
         mode: "0644"
   tasks:
     - name: Ensure output directory exists
