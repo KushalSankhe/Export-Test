@@ -43,6 +43,18 @@
 #      - controller_schedules
 #      - controller_notification_templates
 #
+  pre_tasks:
+    - name: Locate ansible.platform collection install path
+      ansible.builtin.shell: |
+        python3 -c "import ansible_collections.ansible.platform as p; print(p.__path__[0])"
+      register: platform_collection_path
+      changed_when: false
+
+    - name: Patch platform_manager.py with urljoin fix
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/platform_manager.py"
+        dest: "{{ platform_collection_path.stdout }}/plugins/plugin_utils/manager/platform_manager.py"
+        mode: "0644"
   tasks:
     - name: Ensure output directory exists
       ansible.builtin.file:
