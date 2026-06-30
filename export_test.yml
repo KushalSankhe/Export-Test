@@ -1,7 +1,8 @@
 ---
 - name: Export AAP Configuration for Default and ECS
   hosts: localhost
-  connection: ansible.platform.http
+  connection: local
+  # connection: ansible.platform.http
   gather_facts: false
   vars:
     ##########UAT
