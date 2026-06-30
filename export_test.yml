@@ -44,12 +44,12 @@
 #      - controller_schedules
 #      - controller_notification_templates
 #
-  pre_tasks:
-    - name: Patch platform_manager.py with urljoin fix
-      ansible.builtin.copy:
-        src: "{{ playbook_dir }}/platform_manager.py"
-        dest: "{{ platform_collection_path }}/plugins/plugin_utils/manager/platform_manager.py"
-        mode: "0644"
+  # pre_tasks:
+  #   - name: Patch platform_manager.py with urljoin fix
+  #     ansible.builtin.copy:
+  #       src: "{{ playbook_dir }}/platform_manager.py"
+  #       dest: "{{ platform_collection_path }}/plugins/plugin_utils/manager/platform_manager.py"
+  #       mode: "0644"
   tasks:
     - name: Ensure output directory exists
       ansible.builtin.file:
