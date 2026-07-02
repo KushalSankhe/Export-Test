@@ -1,3 +1,0 @@
-# Controller requirements for integration tests.
-# The platform manager subprocess (spawned by action plugins) needs requests for HTTP.
-requests
