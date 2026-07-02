@@ -10,8 +10,6 @@
     - name: Debug incoming webhook event
       condition: true
       action:
-        debug:
-          msg: |
-            Received Event:
-            {{ event | to_nice_json }}
+        debug:         
+          msg: "Received Event: {{ event }}"
  
