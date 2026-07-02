@@ -14,3 +14,4 @@
           msg: |
             Received Event:
             {{ event | to_nice_json }}
+
