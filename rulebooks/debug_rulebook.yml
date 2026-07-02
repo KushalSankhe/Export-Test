@@ -5,13 +5,13 @@
     - ansible.eda.webhook:
         host: 0.0.0.0
         port: 5000
-
+ 
   rules:
     - name: Debug incoming webhook event
-      condition: event is defined
+      condition: true
       action:
         debug:
           msg: |
             Received Event:
             {{ event | to_nice_json }}
-
+ 
