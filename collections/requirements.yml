@@ -1,6 +1,7 @@
 ---
 collections:
   - name: community.sap_operations
+  - name: community.general
 
 
 
